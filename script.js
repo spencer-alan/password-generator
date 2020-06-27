@@ -16,7 +16,7 @@ function generatePassword(){
   let special = confirm("Do you want to add special characters?");
   let options = [];
   let password = "";
-  //let validPwd = [false, false, false, false];
+  
 
   if (lower === true){
     options.push(0);
@@ -46,6 +46,8 @@ function generatePassword(){
     for (let i = 0; i < charCount; i++){
       let charType = options[Math.floor(Math.random() * options.length)];
       let charRandom = characters[charType];
+      //hoping to somehow get the charRandom to tell the validPwd that it chose one of the indexes in the array and set it to true
+      //let validPwd = [false, false, false, false];
       password += charRandom[Math.floor(Math.random() * charRandom.length)];
       //console.log("passwrodLoop: ", password);
     }
