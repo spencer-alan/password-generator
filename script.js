@@ -16,42 +16,48 @@ function generatePassword(){
   let special = confirm("Do you want to add special characters?");
   let options = [];
   let password = "";
-  
+
+  let validPwd = [false, false, false, false];
 
   if (lower === true){
     options.push(0);
-  } /*else {
+  } else {
     validPwd[0] = true
-  }*/
+  }
 
   if (upper === true){
     options.push(1)
-  } /*else {
+  } else {
     validPwd[1] = true
-  }*/
+  }
 
   if (numbers === true){
     options.push(2)
-  } /*else {
+  } else {
     validPwd[2] = true
-  }*/
+  }
 
   if (special === true){
     options.push(3)
-  } /*else {
+  } else {
     validPwd[3] = true
-  }*/
-  //console.log(validPwd)
-  if (charCount >= 8 && charCount <= 128){
-    for (let i = 0; i < charCount; i++){
-      let charType = options[Math.floor(Math.random() * options.length)];
-      let charRandom = characters[charType];
-      //hoping to somehow get the charRandom to tell the validPwd that it chose one of the indexes in the array and set it to true
-      //let validPwd = [false, false, false, false];
-      password += charRandom[Math.floor(Math.random() * charRandom.length)];
-      //console.log("passwrodLoop: ", password);
-    }
   }
+  console.log(validPwd)
+
+
+    if (charCount >= 8 && charCount <= 128){  
+      //Maybe I can do a recursive loop? If validPwd is not satified run agian?
+      //function passwordLoop(){
+      for (let i = 0; i < charCount; i++){
+        let charType = options[Math.floor(Math.random() * options.length)];
+        let charRandom = characters[charType];
+        //password needs to somehow get every characters array at least once
+        password += charRandom[Math.floor(Math.random() * charRandom.length)];
+        //console.log("passwordLoop: ", password);
+      }
+      //} if (validPwd !== [true, true, true, true]){
+      //passwordLoop();}
+    }
   //console.log("password: ", password)
   return password
 }
