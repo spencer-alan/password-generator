@@ -16,23 +16,32 @@ function generatePassword(){
   let special = confirm("Do you want to add special characters?");
   let options = [];
   let password = "";
+  //let validPwd = [false, false, false, false];
 
   if (lower === true){
-    options.push(0)
-  }
+    options.push(0);
+  } /*else {
+    validPwd[0] = true
+  }*/
 
   if (upper === true){
     options.push(1)
-  }
+  } /*else {
+    validPwd[1] = true
+  }*/
 
   if (numbers === true){
     options.push(2)
-  }
+  } /*else {
+    validPwd[2] = true
+  }*/
 
   if (special === true){
     options.push(3)
-  }
-  
+  } /*else {
+    validPwd[3] = true
+  }*/
+  //console.log(validPwd)
   if (charCount >= 8 && charCount <= 128){
     for (let i = 0; i < charCount; i++){
       let charType = options[Math.floor(Math.random() * options.length)];
