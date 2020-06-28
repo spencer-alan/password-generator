@@ -17,49 +17,50 @@ function generatePassword(){
   let options = [];
   let password = "";
 
-  let validPwd = [false, false, false, false];
-
-  if (lower === true){
-    options.push(0);
-  } else {
-    validPwd[0] = true
-  }
-
-  if (upper === true){
-    options.push(1)
-  } else {
-    validPwd[1] = true
-  }
-
-  if (numbers === true){
-    options.push(2)
-  } else {
-    validPwd[2] = true
-  }
-
-  if (special === true){
-    options.push(3)
-  } else {
-    validPwd[3] = true
-  }
-  console.log(validPwd)
-
-
-    if (charCount >= 8 && charCount <= 128){  
-      //Maybe I can do a recursive loop? If validPwd is not satified run agian?
-      //function passwordLoop(){
-      for (let i = 0; i < charCount; i++){
-        let charType = options[Math.floor(Math.random() * options.length)];
-        let charRandom = characters[charType];
-        //password needs to somehow get every characters array at least once
-        password += charRandom[Math.floor(Math.random() * charRandom.length)];
-        //console.log("passwordLoop: ", password);
+  if (charCount >= 8 && charCount <= 128){  
+    //Maybe I can do a recursive loop? If validPwd is not satified run agian?
+      let validPwd = [false, false, false, false];
+      if (lower === true){
+        options.push(0);
+      } else {
+        validPwd[0] = true
       }
-      //} if (validPwd !== [true, true, true, true]){
-      //passwordLoop();}
-    }
-  //console.log("password: ", password)
-  return password
+
+      if (upper === true){
+        options.push(1)
+      } else {
+        validPwd[1] = true
+      }
+
+      if (numbers === true){
+        options.push(2)
+      } else {
+        validPwd[2] = true
+      }
+
+      if (special === true){
+        options.push(3)
+      } else {
+        validPwd[3] = true
+      }
+      console.log(validPwd)
+
+    //function passwordLoop (){
+    for (let i = 0; i < charCount; i++){
+      let charType = options[Math.floor(Math.random() * options.length)];
+      let charRandom = characters[charType];
+      //password needs to somehow get every characters array at least once
+      password += charRandom[Math.floor(Math.random() * charRandom.length)];
+      console.log("pwdLoop: ", password);
+      if (charType === options[0])
+        validPwd[0] = true
+      } 
+    //}  
+      // if (validPwd !== [true, true, true, true]){
+      // passwordLoop();} 
+  }
+//console.log("password: ", password)
+return password
 }
 // Write password to the #password input
 function writePassword() {
